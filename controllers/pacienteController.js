@@ -10,8 +10,8 @@ res.status(200).json(pacientes);
 
 //Cadastra Paciente (POST)
 router.post('/', async (req, res) => {
-const {fk_endereco, nome, sobremone, dataNascimento, contato} = req.body;
-const newEdit = await Paciente.create({fk_endereco, nome, sobremone, dataNascimento, contato})
+const {fk_endereco, nome, sobrenome, dataNascimento, contato} = req.body;
+const newEdit = await Paciente.create({fk_endereco, nome, sobrenome, dataNascimento, contato})
 res.status(200).json({message: 'Cadastrado com sucesso'});
 });
 
@@ -34,9 +34,9 @@ res.status(200).json({message:'Excluído com sucesso'})
 
 //Altera Paciente por ID (PUT)
 router.put('/:id', async (req, res) =>{
-    const {fk_endereco, nome, sobremone, dataNascimento, contato} = req.body;
-await Autor.update(
-{ fk_endereco, nome, sobremone, dataNascimento, contato},
+    const {fk_endereco, nome, sobrenome, dataNascimento, contato} = req.body;
+await Paciente.update(
+{ fk_endereco, nome, sobrenome, dataNascimento, contato},
 {
 where: {id:req.params.id},
 }
